@@ -15,7 +15,6 @@ public class MathController {
 
     private final AtomicLong counter = new AtomicLong();
     
-
     @RequestMapping(value = "/sum/{numberOne}/{numberTwo}", 
             method=RequestMethod.GET)
     public Double sum(
@@ -26,11 +25,11 @@ public class MathController {
         if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
             throw new Exception();
         }
-        return convertToDoulbe(numberOne) + convertToDoulbe(numberTwo);
+        return convertToDouble(numberOne) + convertToDouble(numberTwo);
     }
     
 
-    private Double convertToDoulbe(String number) {
+    private Double convertToDouble(String number) {
         if (number == null)
             return 0D;
         // BR 21,24 US 21.24
