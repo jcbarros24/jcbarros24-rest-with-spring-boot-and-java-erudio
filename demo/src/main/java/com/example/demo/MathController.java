@@ -1,19 +1,21 @@
 package com.example.demo;
 
 
-import java.util.concurrent.atomic.AtomicLong;
+//import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.exceptions.UnsupportedMathOperationException;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @RestController
 public class MathController {
 
-    private final AtomicLong counter = new AtomicLong();
+    //private final AtomicLong counter = new AtomicLong();
     
     @RequestMapping(value = "/sum/{numberOne}/{numberTwo}", 
             method=RequestMethod.GET)
@@ -23,7 +25,7 @@ public class MathController {
         ) throws Exception{
 
         if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
-            throw new Exception();
+            throw new UnsupportedMathOperationException("Please set a numeric value!");
         }
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
     }
