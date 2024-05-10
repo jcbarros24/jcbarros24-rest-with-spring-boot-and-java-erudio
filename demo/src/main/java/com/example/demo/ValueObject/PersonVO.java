@@ -1,33 +1,14 @@
-package com.example.demo.model;
+package com.example.demo.ValueObject;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "person")
-public class Person implements Serializable{
+public class PersonVO implements Serializable{
     
     //private static final Long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "first_name", nullable = false)
     private String firstName;
-
-    @Column(name = "last_name", nullable = false)
     private String lastName;
-
-    @Column
     private String gender;
-
-    @Column
     private String adress;
 
     public Long getId() {
@@ -90,7 +71,7 @@ public class Person implements Serializable{
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Person other = (Person) obj;
+        PersonVO other = (PersonVO) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -119,7 +100,7 @@ public class Person implements Serializable{
         return true;
     }
 
-    public Person() {
+    public PersonVO() {
         
     }    
 }
