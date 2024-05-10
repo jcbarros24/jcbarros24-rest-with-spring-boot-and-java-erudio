@@ -1,4 +1,4 @@
-package com.example.demo.ValueObject;
+package com.example.demo.ValueObject.V1;
 
 import java.io.Serializable;
 

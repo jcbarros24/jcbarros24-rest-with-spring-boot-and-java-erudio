@@ -1,4 +1,4 @@
-package com.example.demo.mapper;
+package com.example.demo.mapper.dozer;
 
 import java.util.ArrayList;
 import java.util.List;

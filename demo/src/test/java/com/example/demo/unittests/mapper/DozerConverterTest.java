@@ -8,8 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.example.demo.model.Person;
-import com.example.demo.ValueObject.PersonVO;
-import com.example.demo.mapper.DozerMapper;
+import com.example.demo.ValueObject.V1.PersonVO;
+import com.example.demo.mapper.dozer.DozerMapper;
 
 
 

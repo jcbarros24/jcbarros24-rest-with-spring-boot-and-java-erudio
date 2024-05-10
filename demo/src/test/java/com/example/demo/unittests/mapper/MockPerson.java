@@ -2,7 +2,7 @@ package com.example.demo.unittests.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.example.demo.ValueObject.PersonVO;
+import com.example.demo.ValueObject.V1.PersonVO;
 import com.example.demo.model.Person;
 
 public class MockPerson {
