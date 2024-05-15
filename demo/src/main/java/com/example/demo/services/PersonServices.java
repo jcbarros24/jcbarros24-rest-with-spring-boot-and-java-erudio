@@ -6,9 +6,12 @@ import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import com.example.demo.ValueObject.V1.PersonVO;
 import com.example.demo.ValueObject.V2.PersonVOV2;
+import com.example.demo.controllers.PersonController;
 import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.mapper.custom.PersonMapper;
 import com.example.demo.mapper.dozer.DozerMapper;
@@ -37,7 +40,9 @@ public class PersonServices {
 
         logger.info("Finding one person");
         var entity = repository.findById(id) .orElseThrow(() -> new ResourceNotFoundException("Erro test"));
-        return DozerMapper.parseObject(entity, PersonVO.class);
+        PersonVO vo = DozerMapper.parseObject(entity, PersonVO.class);
+        vo.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
+        return vo;
     }
 
     public PersonVO create(PersonVO person) {
@@ -61,7 +66,7 @@ public class PersonServices {
     public PersonVO update(PersonVO person) {
 
         logger.info("Updating one person");
-        var entity = repository.findById(person.getId()) .orElseThrow(() -> new ResourceNotFoundException("Erro test"));
+        var entity = repository.findById(person.getKey()) .orElseThrow(() -> new ResourceNotFoundException("Erro test"));
 
         entity.setFirstName(person.getFirstName());
         entity.setLastName(person.getLastName());
